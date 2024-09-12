@@ -1,0 +1,30 @@
+<div class="appointment-details" *ngIf="appointment">
+  <h2 class="title">Appointment Details</h2>
+  <div class="detail-item">
+    <span class="label">Title:</span>
+    <span class="value">{{ appointment.title }}</span>
+  </div>
+  <div class="detail-item">
+    <span class="label">Date:</span>
+    <span class="value">{{ appointment.date | date : "fullDate" }}</span>
+  </div>
+  <div class="detail-item">
+    <span class="label">Start Time:</span>
+    <span class="value">{{ appointment.startTime }}</span>
+  </div>
+  <div class="detail-item">
+    <span class="label">End Time:</span>
+    <span class="value">{{ appointment.endTime }}</span>
+  </div>
+  <div class="detail-item">
+    <span class="label">Duration:</span>
+    <span class="value">{{ calculateDuration() }} minutes</span>
+  </div>
+  <div class="actions">
+    <button class="delete-btn" (click)="onDelete()">Delete Appointment</button>
+  </div>
+</div>
+
+<div class="no-appointment" *ngIf="!appointment">
+  <p>No appointment selected. Click on an appointment to view details.</p>
+</div>

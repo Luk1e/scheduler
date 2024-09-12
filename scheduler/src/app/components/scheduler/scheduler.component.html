@@ -1,0 +1,35 @@
+<div *ngIf="selectedDate" class="scheduler-container">
+  <h3>{{ selectedDate | date : "MMMM d, yyyy" }}</h3>
+
+  <div class="scrollable-content">
+    <div class="scheduler-grid">
+      <div class="hour-column">
+        <div class="hour-cell" *ngFor="let hour of hours">{{ hour }}:00</div>
+      </div>
+      <div class="scheduler-column">
+        <div
+          class="scheduler-row"
+          *ngFor="let hour of hours"
+          cdkDropList
+          [id]="hour + '-list'"
+          [cdkDropListData]="appointmentsByHour[hour]"
+          (cdkDropListDropped)="onDrop($event, hour)"
+          [cdkDropListConnectedTo]="hourListIds"
+        >
+          <div
+            *ngFor="let appointment of appointmentsByHour[hour]; let i = index"
+            class="scheduler-cell"
+            [ngStyle]="calculateAppointmentStyle(appointment, i)"
+            cdkDrag
+            [cdkDragData]="appointment"
+            (click)="onAppointmentClick(appointment)"
+          >
+            {{ appointment.title }}
+            <br />
+            {{ appointment.startTime }} - {{ appointment.endTime }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
