@@ -1,0 +1,13 @@
+<div class="calendar-appointment-container">
+  <div class="">
+    <mat-card class="demo-inline-calendar-card">
+      <mat-calendar
+        [(selected)]="selectedDate"
+        (selectedChange)="onDateChange($event)"
+      ></mat-calendar>
+    </mat-card>
+    <button mat-stroked-button (click)="openDialog()" class="dialog-btn">
+      Create Appointment
+    </button>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<h1 mat-dialog-title>Add Appointment</h1>
+<form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+      <mat-error *ngIf="title?.hasError('required')"
+        >Title is required.</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="date?.hasError('required')"
+        >Date is required.</mat-error
+      >
+      <mat-error *ngIf="date?.hasError('invalidDate')"
+        >Date cannot be in the past.</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Start Time</mat-label>
+      <mat-select formControlName="startTime">
+        <mat-option *ngFor="let time of times" [value]="time">{{
+          time
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="startTime?.hasError('required')"
+        >Start Time is required.</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>End Time</mat-label>
+      <mat-select formControlName="endTime">
+        <mat-option *ngFor="let time of times" [value]="time">{{
+          time
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="endTime?.hasError('required')"
+        >End Time is required.</mat-error
+      >
+      <mat-error *ngIf="appointmentForm.hasError('endTimeInvalid')"
+        >End Time must be later than Start Time.</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">
+      Add Appointment
+    </button>
+  </mat-dialog-actions>
+</form>
