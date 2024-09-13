@@ -20,6 +20,10 @@
     <span class="label">Duration:</span>
     <span class="value">{{ calculateDuration() }} minutes</span>
   </div>
+  <div class="detail-item">
+    <span class="label">Description:</span>
+    <span class="value">{{ appointment.description }} minutes</span>
+  </div>
   <div class="actions">
     <button class="delete-btn" (click)="onDelete()">Delete Appointment</button>
   </div>
