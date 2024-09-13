@@ -20,9 +20,9 @@
     <span class="label">Duration:</span>
     <span class="value">{{ calculateDuration() }} minutes</span>
   </div>
-  <div class="detail-item">
+  <div class="detail-item" *ngIf="appointment.description">
     <span class="label">Description:</span>
-    <span class="value">{{ appointment.description }} minutes</span>
+    <span class="value">{{ appointment.description }}</span>
   </div>
   <div class="actions">
     <button class="delete-btn" (click)="onDelete()">Delete Appointment</button>
