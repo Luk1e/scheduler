@@ -55,6 +55,10 @@
    ng serve
    ```
 
+## Hosted Website
+
+You can view the hosted website at: [https://luk1e.github.io/scheduler/](https://luk1e.github.io/scheduler/)
+
 ## Contact
 
 For any questions or further information, please contact me at: [luka.gogiashvili.02@gmail.com](mailto:luka.gogiashvili.02@gmail.com).
